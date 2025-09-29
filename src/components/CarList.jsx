@@ -4,18 +4,18 @@ import { httpGet, httpPost } from "../service/carService";
 function CarList() {
   const [cars, setCars] = useState([]);
 
-  useEffect(() => {
-    async function fetchCars() {
-      const data = await httpGet("http://localhost:3000/cars");
-      setCars(data);
-    }
-    fetchCars();
-  }, []);
+
+  async function fetchCars() {
+    const data = await httpGet("http://localhost:3000/cars");
+    console.log(data);
+    setCars(data);
+  }
 
 
   return (
     <div>
       <h1>Car list</h1>
+      <button onClick={fetchCars}>click to show</button>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {cars.map((car) => (
           <li key={car.id} style={{ marginBottom: "20px", border: "1px solid #ccc", padding: "10px" }}>
