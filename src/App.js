@@ -7,9 +7,9 @@ import Logout from './components/Logout';
 function App() {
   return (
     <div className="App">
-      <CarList />
       <Login />
       <Logout />
+      <CarList />
     </div>
   );
 }

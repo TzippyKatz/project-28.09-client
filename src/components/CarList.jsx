@@ -6,9 +6,19 @@ function CarList() {
 
 
   async function fetchCars() {
-    const data = await httpGet("http://localhost:3000/cars");
-    console.log(data);
-    setCars(data);
+    try {
+      const data = await httpGet("http://localhost:3000/cars");
+      console.log(data);
+      if (Array.isArray(data)) {
+        setCars(data);
+      } else {
+        setCars([]);
+      }
+    } catch (err) {
+      console.error("Failed to fetch cars:", err);
+      alert("You have to login in order to see the car list");
+      setCars([]);
+    }
   }
 
 
